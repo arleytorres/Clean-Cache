@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace CleanCache
 {
@@ -207,6 +205,10 @@ namespace CleanCache
                     foreach (Control control3 in control2.Controls)
                     {
                         if (control3.Tag != null && int.TryParse(control3.Tag.ToString(), out tag)) control3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, control3.Width, control3.Height, tag, tag));
+                        foreach (Control control4 in control3.Controls)
+                        {
+                            if (control4.Tag != null && int.TryParse(control4.Tag.ToString(), out tag)) control4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, control4.Width, control4.Height, tag, tag));
+                        }
                     }
                 }
             }
@@ -381,6 +383,12 @@ namespace CleanCache
             }
         }
 
+        private void BalloonDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+        }
 
         private bool Moving = false;
         private int posX = 0;

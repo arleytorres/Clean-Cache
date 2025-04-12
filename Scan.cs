@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace CleanCache
 {
@@ -119,6 +120,7 @@ namespace CleanCache
                     AutoSize = false,
                     Font = new Font("Arial Narrow", 8.25f, FontStyle.Bold),
                     Size = new Size(114, 18),
+                    Tag = 15,
                     TextAlign = ContentAlignment.MiddleCenter,
                     ForeColor = Color.DimGray,
                 };
@@ -190,7 +192,6 @@ namespace CleanCache
                 id++;
                 await Task.Delay(25);
             }
-            form.ResizeBorders();
         }
 
         public static async Task Doubles(Form1 form)
@@ -290,6 +291,7 @@ namespace CleanCache
             form.UserCachelbl.Text = $"{realUserCache.size} {realUserCache.tipo}";
             form.PrefetchCachelbl.Text = $"{realPrefetchCache.size} {realPrefetchCache.tipo}";
             form.DuplicatedCache.Text = form.DuplicatedFiles.Sum(x => x.Value.Count).ToString();
+            form.ResizeBorders();
         }
     }
 }
