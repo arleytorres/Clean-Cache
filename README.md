@@ -37,8 +37,9 @@ O Clean-Cache atua como um faxineiro digital, removendo arquivos temporários ac
 ## 💡 Tecnologias Utilizadas
 
 - Linguagens: C#
-- Frameworks opcionais:
-  - `.NET Framework`
+- Frameworks:
+  - `.NET Framework 4.8.1`
+  - `WindowsForms`
 - Acesso direto ao sistema para operações otimizadas
 
 ---
